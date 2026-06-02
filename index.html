@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронная визитка МПЗМ</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #0f1319;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #151b26, #1b2230);
+            border: 1px solid rgba(255, 153, 0, 0.15);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 153, 0, 0.03);
+            color: #ffffff;
+            max-width: 420px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Красивый светящийся элемент декора */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,153,0,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .card-header-line {
+            background: linear-gradient(90deg, #ff9900, #ff5500);
+            height: 6px;
+            width: 100%;
+        }
+
+        .card-body {
+            padding: 40px 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, #ff9900, #ff6600);
+            border-radius: 12px;
+            color: #0f1319;
+            font-size: 26px;
+            height: 56px;
+            width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 18px;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .company-name {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            color: #ff9900;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .services {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        .services-title {
+            color: #7e8da2;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .service-list {
+            color: #e2e8f0;
+            font-size: 14px;
+            list-style: none;
+            line-height: 1.6;
+        }
+
+        .service-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 22px;
+        }
+
+        .service-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-list li::before {
+            content: "✓";
+            color: #ff9900;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+            border-radius: 12px;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            padding: 12px 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 153, 0, 0.05);
+            border-color: rgba(255, 153, 0, 0.2);
+            color: #ff9900;
+        }
+
+        .contact-icon {
+            color: #ff9900;
+            font-size: 16px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Кнопка "Наш сайт" с градиентом и анимацией */
+        .btn-site {
+            background: linear-gradient(90deg, #ff9900, #ff6600);
+            border: none;
+            border-radius: 12px;
+            color: #0f1319;
+            cursor: pointer;
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(255, 153, 0, 0.25);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-site:hover {
+            background: linear-gradient(90deg, #ffaa22, #ff7711);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 153, 0, 0.4);
+        }
+        
+        .btn-site:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header-line"></div>
+        <div class="card-body">
+            
+            <div class="brand">
+                <div class="logo-icon">🏗️</div>
+                <div class="company-name">МПЗМ</div>
+            </div>
+
+            <div class="tagline">Строительная компания</div>
+
+            <div class="services">
+                <div class="services-title">Наши преимущества</div>
+                <ul class="service-list">
+                    <li>Работаем по всей территории России</li>
+                    <li>Гарантия качества и высокая оперативность</li>
+                    <li>Полный пакет официальной документации</li>
+                </ul>
+            </div>
+
+            <div class="contacts">
+                <a href="tel:+79284222023" class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>+7 (928) 422-20-23</span>
+                </a>
+                <a href="tel:+78612115723" class="contact-item">
+                    <span class="contact-icon">☎️</span>
+                    <span>+7 (861) 211-57-23</span>
+                </a>
+                <a href="mailto:mpzm-yg@mail.ru" class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span>mpzm-yg@mail.ru</span>
+                </a>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>г. Краснодар, ул. Колхозная, д. 80, пом. 29</span>
+                </div>
+            </div>
+
+            <!-- Ссылка на сайт работает корректно и открывается в новой вкладке -->
+            <a href="http://mpzm.ru/" target="_blank" class="btn-site">Перейти на сайт</a>
+
+        </div>
+    </div>
+
+</body>
+</html>
